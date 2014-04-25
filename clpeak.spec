@@ -14,6 +14,8 @@ Source0:    %{url}/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
 
 BuildRequires: cmake >= 2.6
 BuildRequires: opencl-headers
+BuildRequires: ocl-icd-devel
+BuildRequires: mesa-libGL-devel
 BuildRequires: gcc-c++
 
 
@@ -28,6 +30,7 @@ bandwidth & compute.
 %build
 mkdir build
 cd build
+
 %cmake ..
 
 make %{?_smp_mflags}
