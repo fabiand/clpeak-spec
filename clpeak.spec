@@ -5,7 +5,7 @@
 Summary:    Find peak OpenCL capacities like bandwidth & compute
 Name:       clpeak
 Version:    0.1
-Release:    1%{?checkout}%{?dist}
+Release:    2%{?checkout}%{?dist}
 License:    Public Domain
 Group:      Applications/System
 URL:        https://github.com/krrishnarraj/%{name}
@@ -16,7 +16,6 @@ BuildRequires: cmake >= 2.6
 BuildRequires: opencl-headers
 BuildRequires: ocl-icd-devel
 BuildRequires: mesa-libGL-devel
-BuildRequires: gcc-c++
 
 # Issue with arch specific opencl-headers
 # https://bugzilla.redhat.com/show_bug.cgi?id=1027199
@@ -42,7 +41,7 @@ make %{?_smp_mflags}
 
 %install
 mkdir -p %{buildroot}/%{_bindir}/
-%{__install} -m0755 build/clpeak %{buildroot}/%{_bindir}/
+install -pm0755 build/clpeak %{buildroot}%{_bindir}/
 
 
 %files
@@ -51,5 +50,9 @@ mkdir -p %{buildroot}/%{_bindir}/
 
 
 %changelog
+* Fri Apr 25 2014 Fabian Deutsch <fabiand@fedoraproject.org> - 0.1-2.20140425gitc0b94f2
+- Improve installation
+- Drop gcc-c++ BR
+
 * Fri Apr 25 2014 Fabian Deutsch <fabiand@fedoraproject.org> - 0.1-1.20140425gitc0b94f2
 - Initial package
