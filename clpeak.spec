@@ -18,6 +18,10 @@ BuildRequires: ocl-icd-devel
 BuildRequires: mesa-libGL-devel
 BuildRequires: gcc-c++
 
+# Issue with arch specific opencl-headers
+# https://bugzilla.redhat.com/show_bug.cgi?id=1027199
+ExcludeArch: armv7hl
+
 
 %description
 A tool which profiles OpenCL devices to find their peak capacities like
